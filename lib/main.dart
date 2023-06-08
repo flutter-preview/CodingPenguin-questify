@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:flutter_test_1/models/user.dart';
-import 'package:flutter_test_1/api_service.dart';
+// import 'package:flutter_test_1/models/user.dart';
+// import 'package:flutter_test_1/api_service.dart';
 
-import 'package:flutter_test_1/home/home.dart';
-import 'package:flutter_test_1/calendar/calendar.dart';
-import 'package:flutter_test_1/leaderboard/leaderboard.dart';
-import 'package:flutter_test_1/profile/profile.dart';
+import '../home/home.dart';
+import '../calendar/calendar.dart';
+import '../leaderboard/leaderboard.dart';
+import '../profile/profile.dart';
 
 void main() {
   runApp(const App());

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_test_1/app_bar/app_bar.dart';
-import 'package:flutter_test_1/navbar/navbar.dart';
+import '../navbar/navbar.dart';
 
 class Leaderboard extends StatelessWidget {
   const Leaderboard({super.key});

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class UserModel {
   UserModel(
       {required this.id,
