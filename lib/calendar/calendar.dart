@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_test_1/app_bar/app_bar.dart';
-import 'package:flutter_test_1/navbar/navbar.dart';
+import '../app_bar/app_bar.dart';
+import '../navbar/navbar.dart';
 
 class Calendar extends StatelessWidget {
   const Calendar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: const Color(0x000),
-      appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-          title: Image.asset('assets/logos/MWHAHAH.png',
-              width: 40, height: 40, fit: BoxFit.fitHeight)),
+      appBar: CustomAppBar(),
       // floatingActionButton: FloatingActionButton(child: Icon(Icons.mic), onPressed: () {}),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const Navbar(),
-      body: const Center(
+      bottomNavigationBar: Navbar(),
+      body: Center(
           child: Text('THIS IS THE CALENDAR PAGE.',
-          style: TextStyle(color: Colors.white)
+          style: TextStyle(color: Colors.white, fontSize: 24)
         )
       ),
     );

@@ -21,7 +21,7 @@ class Profile extends StatelessWidget {
       bottomNavigationBar: const Navbar(),
       body: const Center(
           child: Text('THIS IS THE PROFILE PAGE.',
-          style: TextStyle(color: Colors.white)
+          style: TextStyle(color: Colors.white, fontSize: 24)
         )
       ),
     );

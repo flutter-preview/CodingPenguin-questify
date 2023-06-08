@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
 
-class TitleSection extends StatelessWidget {
-  const TitleSection({Key? key}) : super(key: key);
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
+  const CustomAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize:  MainAxisSize.min,
-      children: [
-        Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.only(right: 5),
-            ),
-            const Text(
-              'Joy',
-              style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 24)
-            ),
-          ],
-        ),
-
-      ],
-    );
+    return AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: Image.asset('assets/logos/MWHAHAH.png',
+              width: 40, height: 40, fit: BoxFit.fitHeight));
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

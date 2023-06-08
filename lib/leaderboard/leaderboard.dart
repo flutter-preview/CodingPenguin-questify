@@ -21,7 +21,7 @@ class Leaderboard extends StatelessWidget {
       bottomNavigationBar: const Navbar(),
       body: const Center(
           child: Text('THIS IS THE LEADERBOARD PAGE.',
-          style: TextStyle(color: Colors.white)
+          style: TextStyle(color: Colors.white, fontSize: 24)
         )
       ),
     );

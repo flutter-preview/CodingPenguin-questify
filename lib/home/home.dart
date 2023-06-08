@@ -21,6 +21,6 @@ class Home extends StatelessWidget {
         bottomNavigationBar: const Navbar(),
         body: const Center(
             child: Text('THIS IS THE HOME PAGE.',
-                style: TextStyle(color: Colors.white))));
+                style: TextStyle(color: Colors.white, fontSize: 24))));
   }
 }

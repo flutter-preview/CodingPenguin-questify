@@ -36,9 +36,9 @@ class _NavbarState extends State<Navbar> {
       Navigator.pushNamed(context, '/');
     } else if (index == 1) {
       Navigator.pushNamed(context, '/calendar');
-    } else if (index == 2) {
-      Navigator.pushNamed(context, '/leaderboard');
     } else if (index == 3) {
+      Navigator.pushNamed(context, '/leaderboard');
+    } else if (index == 4) {
       Navigator.pushNamed(context, '/profile');
     }
   }
