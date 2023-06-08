@@ -8,12 +8,6 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  final iconList = <IconData>[
-    Icons.home,
-    Icons.calendar_today,
-    Icons.leaderboard,
-    Icons.person
-  ];
   int _currentIndex = 0;
 
   final List<BottomNavigationBarItem> items = [
