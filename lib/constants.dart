@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home/widgets/home_widget.dart';
+import 'home/widgets/main_widget.dart';
 import 'calendar/widgets/main_widget.dart';
 import 'leaderboard/widgets/main_widget.dart';
 import 'user_profile/widgets/main_widget.dart';

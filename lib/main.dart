@@ -23,7 +23,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          textTheme: GoogleFonts.outfitTextTheme(),
+          fontFamily: GoogleFonts.outfit().fontFamily,
+          textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.white, displayColor: Colors.white),
           scaffoldBackgroundColor: const Color(0x00000000)),
       title: 'Joy',
       // Start the app with the "/" named route. In this case, the app starts
