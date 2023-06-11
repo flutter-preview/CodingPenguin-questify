@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:developer' as developer;
 
 class TaskWidget extends StatefulWidget {
-  const TaskWidget({super.key});
+  final String title;
+  const TaskWidget({Key? key, required this.title}) : super(key: key);
 
   @override
   State<TaskWidget> createState() => _TaskWidgetState();
@@ -45,7 +45,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                     )
                   ),
                   Text(
-                    "Lorem Ipsum",
+                    widget.title,
                     style: TextStyle(
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       fontSize: 18
