@@ -1,5 +1,3 @@
-# Joy
-
 ![Joy Logo](assets/logos/logo-no-background.png)
 
 Your all-in-one AI personal assistant powered by ChatGPT, Flutter, FastAPI, and MongoDB. Joy modernizes your everyday life by simplifying the space of productivity. 
