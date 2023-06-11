@@ -18,5 +18,5 @@ With the growing use of technology and AI in our lives, it can be difficult to s
 
 ## Want to learn more?
 
-My name is Danny, the lead developer of this project. Email me personally regarding any inquiries at nguyenhuydanny@gmail.com.
+👋 I'm Danny, the lead developer of this project. Email me personally regarding any inquiries at nguyenhuydanny@gmail.com.
 
