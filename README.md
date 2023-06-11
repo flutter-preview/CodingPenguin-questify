@@ -11,6 +11,11 @@ With our built-in progression system, you can earn XP to level up, and eventuall
 
 With the growing use of technology and AI in our lives, it can be difficult to stay productive. We believe our platform engages and motivates our users to stay productive and live happy, healthy lives.   
 
+## Progress Screenshots!
+
+<i>Homescreen 06/10/2023</i> <br />
+<img src="assets/screenshots/homescreen.png" alt="Homescreen 06/10/2023" width="400" height="867" />
+
 ## Want to learn more?
 
 My name is Danny, the lead developer of this project. Email me personally regarding any inquiries at nguyenhuydanny@gmail.com.
