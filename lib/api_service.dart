@@ -7,17 +7,24 @@ import 'package:flutter_test_1/constants.dart';
 import 'package:flutter_test_1/models/user.dart';
 
 class ApiService {
-  Future<dynamic> getUser() async {
+
+  // https://firebase.flutter.dev/docs/firestore/usage/
+  Stream<QuerySnapshot> getTasks() {
     final firebaseDB = FirebaseFirestore.instance;
-    await firebaseDB.collection("tasks").get().then((event) {
-      for (var doc in event.docs) {
-        print("${doc.id} => ${doc.data()}");
-      }
-      return event.docs;
-    }).onError((error, stackTrace) {
-      print(error);
-      print(stackTrace);
-      return throw Exception("Failed to load tasks.");
-    });
+    return firebaseDB.collection("tasks").snapshots();
+  }
+
+  Future<void> addTask(String taskName) {
+    final firebaseDB = FirebaseFirestore.instance;
+    return firebaseDB.collection("tasks")
+      .add({
+        "createdAt": Timestamp.fromDate(DateTime.now()),
+        "points": 2, // hard coded
+        "state": "incomplete",  // hard coded
+        "title": "${taskName}",
+        "userId": "aaaaa"  // userId hard coded for now
+      })
+      .then((value) => print("Task added"))
+      .catchError((onError) => print("Failed to add task: $onError"));
   }
 }
