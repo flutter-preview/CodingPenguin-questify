@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../api_service.dart';
 import 'task_widget.dart';
 import 'search_bar.dart';
 
@@ -43,6 +45,8 @@ class HomeWidget extends StatelessWidget {
         );
       }
     }
+    
+    Future<dynamic> users = ApiService().getUser();
 
     // TODO: ADD TO FIREBASE INSTEAD: https://kymoraa.medium.com/to-do-list-app-with-flutter-firebase-7910bc42cf14
     List<Widget> tasks = [];
@@ -128,14 +132,17 @@ class HomeWidget extends StatelessWidget {
             )
           ),
           // TODO: READ FROM FIREBASE INSTEAD: https://kymoraa.medium.com/to-do-list-app-with-flutter-firebase-7910bc42cf14
-          ListView(shrinkWrap: true, children: const [
-            TaskWidget(title: "Workout"),
-            TaskWidget(title: "Call parents"),
-            TaskWidget(title: "Study"),
-            TaskWidget(title: "Go pick up stuff"),
-            TaskWidget(title: "Get groceries"),    
-          ]
-        )
+          // ListView(shrinkWrap: true, children: const [
+          //   TaskWidget(title: "Workout"),
+          //   TaskWidget(title: "Call parents"),
+          //   TaskWidget(title: "Study"),
+          //   TaskWidget(title: "Go pick up stuff"),
+          //   TaskWidget(title: "Get groceries"),    
+          // ]
+        // )
+        // StreamBuilder(builder: (context, snapshot) {
+
+        // })
       ]
     );
   }

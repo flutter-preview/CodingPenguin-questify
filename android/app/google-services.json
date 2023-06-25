@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "641243027761",
+    "project_id": "joy-ai-9f03f",
+    "storage_bucket": "joy-ai-9f03f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641243027761:android:e0f56b00ebbce9a560f810",
+        "android_client_info": {
+          "package_name": "com.example.flutter_test_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641243027761-u0tra5qk35etpptlu4092259uelrpcjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCezUYJXw1hmp4aSYB1isNciJdY6QS-nGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641243027761-u0tra5qk35etpptlu4092259uelrpcjb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "641243027761-7pb2eknrbs72fngbnv1i0t4enptuadpm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterTest1.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
