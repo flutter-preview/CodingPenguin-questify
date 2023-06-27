@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../../api_service.dart';
 import 'task_widget.dart';
 import 'search_bar.dart';
+import 'calendar_list_brief.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,6 +45,7 @@ class HomeWidget extends StatelessWidget {
     }
 
     return Column(children: [
+      CalendarListBriefView(),
       Container(
           alignment: Alignment.centerLeft,
           margin: const EdgeInsets.fromLTRB(20, 10, 0, 0),
