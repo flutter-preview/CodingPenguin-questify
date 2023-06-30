@@ -31,16 +31,147 @@ class _GoalWidgetState extends State<GoalWidget> {
                 return Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    height: 225,
+                    height: double.infinity,
                     decoration: BoxDecoration(
                       color: const Color(0xFF282828),
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(30),
-                      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                      child: Column(children: [
                         Material(
-                          borderRadius: BorderRadius.circular(20), // this has to stay if lines 50-57 stay
+                          color: Colors.transparent,
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            color: Colors.white70,
+                            iconSize: 48.0,
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              // color: Colors.white70,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Icon(
+                              Icons.confirmation_num_sharp,
+                              size: 100.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "Write a stellar ML research paper for internship",
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "80%",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              "8/10 Tasks",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                        LinearProgressIndicator(
+                          value: 50.0,
+                        ),
+                        // TODO: Q, is this dynamic or static (always the 3 box?)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.all(5.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3.0),
+                                border: Border.all(
+                                  color: Colors.white70,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.fire_extinguisher,
+                                  ),
+                                  Text(
+                                    "8",
+                                    style: TextStyle(
+                                      fontSize: 48,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.0),
+                              decoration: const BoxDecoration(
+
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "8",
+                                    style: TextStyle(
+                                      fontSize: 48,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Done",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.0),
+                              decoration: const BoxDecoration(
+
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "2",
+                                    style: TextStyle(
+                                      fontSize: 48,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    "to go",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Material(
+                          borderRadius: BorderRadius.circular(20), // this has to stay if lines 50-57 stay // i hope your line 50-57 is same as mine 50-57
                           child: TextField(
                             controller: titleController,
                             decoration: InputDecoration(
