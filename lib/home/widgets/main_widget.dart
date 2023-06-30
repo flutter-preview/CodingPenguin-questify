@@ -35,6 +35,7 @@ class HomeWidget extends StatelessWidget {
     }
 
     final ApiService api = ApiService();
+    final Stream<QuerySnapshot> _eventsStream = api.getEvents();
     final Stream<QuerySnapshot> _tasksStream = api.getTasks();
 
     return Column(children: [
@@ -44,21 +45,40 @@ class HomeWidget extends StatelessWidget {
           child: buildGreeting()),
       // TODO: UNCOMMENT AFTER DONE WITH EVENTS
       // const SearchBarWidget(),
-      // TODO: UNCOMMENT AFTER DONE WITH GOALS
-      // Container(
-      //   alignment: Alignment.centerLeft,
-      //   margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: [
-      //       Text("Your Events",
-      //         style: TextStyle(
-      //           fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24
-      //         )
-      //       )
-      //     ],
-      //   )
-      // ),
+      Container(
+        alignment: Alignment.centerLeft,
+        margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Your Events",
+              style: TextStyle(
+                fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24
+              )
+            )
+          ],
+        )
+      ),
+      StreamBuilder<QuerySnapshot>(
+        stream: _eventsStream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text(style: TextStyle(color: Colors.white), "Unable to get Events :(");
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text(style: TextStyle(color: Colors.white), "Loading Events...");
+          }
+
+          return Column(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                document.data()! as Map<String, dynamic>;
+              return GoalWidget(id: document.id, title: "${data["title"]}");
+            }).toList(),
+          );
+        }
+      ),
       Container(
         alignment: Alignment.centerLeft,
         margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
