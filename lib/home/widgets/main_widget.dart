@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../../api_service.dart';
 import 'add_goal.dart';
 import 'goal.dart';
+import 'event.dart';
 import 'search_bar.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -63,20 +64,21 @@ class HomeWidget extends StatelessWidget {
         stream: _eventsStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Text(style: TextStyle(color: Colors.white), "Unable to get Events :(");
+            return Text(style: TextStyle(color: Colors.white), "Unable to get Goals :(");
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Text(style: TextStyle(color: Colors.white), "Loading Events...");
+            return Text(style: TextStyle(color: Colors.white), "Loading Goals...");
           }
 
-          return Column(
+          return SizedBox(height: 150, child: ListView(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data =
-                document.data()! as Map<String, dynamic>;
-              return GoalWidget(id: document.id, title: "${data["title"]}");
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              return EventWidget(id: document.id, title: "${data["title"]}", club: data["club"]);
             }).toList(),
-          );
+          ));
         }
       ),
       Container(
