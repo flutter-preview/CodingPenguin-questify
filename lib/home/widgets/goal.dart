@@ -13,9 +13,17 @@ class GoalWidget extends StatefulWidget {
 }
 
 class _GoalWidgetState extends State<GoalWidget> {
+  static const double verticalMargin = 5.0;  // of the entire top UI
+
+  // TODO: text too small?
+  IconData goalIcon = Icons.confirmation_num;  // TODO: change to a more flexible type? instead of the builtin flutter type
+  int tasksCompleted = 4;
+  int tasksTotal = 10;
+  int streaks = 8;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController titleController = TextEditingController(text: widget.title);
+    TextEditingController titleController = TextEditingController(text: widget.title);  // TODO: how to edit title?
 
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) { 
@@ -46,10 +54,9 @@ class _GoalWidgetState extends State<GoalWidget> {
                               Navigator.of(context).pop();
                             },
                             color: Colors.white70,
-                            iconSize: 48.0,
+                            iconSize: 23.0,
                             icon: const Icon(
                               Icons.keyboard_arrow_down_rounded,
-                              // color: Colors.white70,
                             ),
                           ),
                         ),
@@ -57,180 +64,264 @@ class _GoalWidgetState extends State<GoalWidget> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Icon(
-                              Icons.confirmation_num_sharp,
-                              size: 100.0,
+                              goalIcon,
+                              size: 88.0,
                               color: Colors.white,
                             ),
                           ),
                         ),
-                        Text(
-                          "Write a stellar ML research paper for internship",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "80%",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            Text(
-                              "8/10 Tasks",
-                              style: TextStyle(
-                                fontSize: 18,
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: verticalMargin),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text( // TODO: text wrapping mechanism?
+                              widget.title,
+                              style: const TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 24,
                                 color: Colors.white,
                               ),
-                            )
-                          ],
+                            ),
+                          ),
                         ),
-                        LinearProgressIndicator(
-                          value: 50.0,
+                        // PROGRESS INDICATOR GENERAL UI
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: verticalMargin),
+                          child: Column(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.symmetric(vertical: 4.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "${((tasksCompleted/tasksTotal)*100).toInt()}%",
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 14,
+                                        color: Color.fromRGBO(255, 255, 255, 1.0),
+                                      ),
+                                    ),
+                                    Text(
+                                      "$tasksCompleted/$tasksTotal Tasks",
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 14,
+                                        color: Color.fromRGBO(255, 255, 255, 0.5),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              // CUSTOM ROUNDED PROGRESS INDICATOR
+                              Container(
+                                margin: const EdgeInsets.symmetric(vertical: 4.0),
+                                height: 23.0,
+                                child: LayoutBuilder(
+                                  builder: (BuildContext context, BoxConstraints constraints) {
+                                    return Stack(
+                                      children: [
+                                        Positioned( // BACKGROUND
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(29.0)),
+                                              color: Color(0xFFD9D9D9),
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned( // FOREGROUND
+                                          child: Container(
+                                            width: constraints.maxWidth * (tasksCompleted/tasksTotal),
+                                            decoration: const BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(29.0)),
+                                              color: Color(0xFF809CFF),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         // TODO: Q, is this dynamic or static (always the 3 box?)
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(5.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(3.0),
-                                border: Border.all(
-                                  color: Colors.white70,
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: verticalMargin),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.all(5.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  border: Border.all(
+                                    color: const Color.fromRGBO(255, 255, 255, 0.25),
+                                    width: 3.0,
+                                  ),
+                                ),
+                                height: 64,
+                                width: 95,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      constraints: BoxConstraints.tight(const Size(12.0, 29.0)),
+                                      child: const Icon(
+                                        Icons.local_fire_department,
+                                        color: Colors.white70,
+                                        size: 29.0,
+                                      ),
+                                    ),
+                                    Text(
+                                      "$streaks",
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.fire_extinguisher,
+                              Container(
+                                margin: EdgeInsets.all(5.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  border: Border.all(
+                                    color: const Color.fromRGBO(255, 255, 255, 0.25),
+                                    width: 3.0,
                                   ),
-                                  Text(
-                                    "8",
-                                    style: TextStyle(
-                                      fontSize: 48,
-                                      color: Colors.white,
+                                ),
+                                height: 64,
+                                width: 95,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "$tasksCompleted",
+                                        style: const TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 30,
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.0),
-                              decoration: const BoxDecoration(
-
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "8",
-                                    style: TextStyle(
-                                      fontSize: 48,
-                                      color: Colors.white,
+                                    const Text(
+                                      "done",
+                                      style: TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 16,
+                                        color: Color.fromRGBO(255, 255, 255, 0.75),
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    "Done",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.0),
-                              decoration: const BoxDecoration(
-
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "2",
-                                    style: TextStyle(
-                                      fontSize: 48,
-                                      color: Colors.white,
-                                    ),
+                              Container(
+                                margin: EdgeInsets.all(5.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  border: Border.all(
+                                    color: const Color.fromRGBO(255, 255, 255, 0.25),
+                                    width: 3.0,
                                   ),
-                                  Text(
-                                    "to go",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.grey,
+                                ),
+                                height: 64,
+                                width: 95,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "${tasksTotal-tasksCompleted}",
+                                        style: const TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 30,
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    const Text(
+                                      "to go",
+                                      style: TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 16,
+                                        color: Color.fromRGBO(255, 255, 255, 0.75),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
 
-                        Material(
-                          borderRadius: BorderRadius.circular(20), // this has to stay if lines 50-57 stay // i hope your line 50-57 is same as mine 50-57
-                          child: TextField(
-                            controller: titleController,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: const Color(0xFF3F3C3C),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              hintText: "Task Title",
-                              hintStyle: TextStyle(
-                                color: const Color(0xFFDEDEDE),
-                                fontFamily: GoogleFonts.outfit().fontFamily,
-                                fontSize: 24.0
-                              )
-                            ),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.outfit().fontFamily,
-                              fontSize: 24.0
-                            ),
-                            enableInteractiveSelection: false,
-                          )
-                        ),    
-                        Material(
-                          child: Container(
-                            color: Color(0xFF282828),
-                            child: Row(children: [
-                              Expanded(flex: 4, child: TextButton(
-                                onPressed: () {
-                                  updateTask(widget.id, {'title': titleController.text});
-                                  Navigator.of(context).pop();
-                                },
-                                style: TextButton.styleFrom(
-                                  minimumSize: Size(40, 60),
-                                  splashFactory: NoSplash.splashFactory,
-                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  padding: EdgeInsets.all(0),
-                                  backgroundColor: const Color(0xFF9BB1FF)
-                                ),
-                                child: Text("Update Goal", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
-                              )),
-                              Expanded(
-                                flex: 1,
-                                child: IconButton(
-                                  icon: const Icon(Icons.delete, color: Colors.white),
-                                  onPressed: () {
-                                    deleteTask(widget.id);
-                                    Navigator.of(context).pop();
-                                  }
-                                )
-                              )
-                            ])
-                          )
-                        )
+                        // Material(
+                        //   borderRadius: BorderRadius.circular(20), // this has to stay if lines 50-57 stay // i hope your line 50-57 is same as mine 50-57
+                        //   child: TextField(
+                        //     controller: titleController,
+                        //     decoration: InputDecoration(
+                        //       filled: true,
+                        //       fillColor: const Color(0xFF3F3C3C),
+                        //       border: OutlineInputBorder(
+                        //         borderSide: BorderSide.none,
+                        //         borderRadius: BorderRadius.circular(15),
+                        //       ),
+                        //       focusedBorder: OutlineInputBorder(
+                        //         borderSide: BorderSide.none,
+                        //         borderRadius: BorderRadius.circular(15),
+                        //       ),
+                        //       hintText: "Task Title",
+                        //       hintStyle: TextStyle(
+                        //         color: const Color(0xFFDEDEDE),
+                        //         fontFamily: GoogleFonts.outfit().fontFamily,
+                        //         fontSize: 24.0
+                        //       )
+                        //     ),
+                        //     style: TextStyle(
+                        //       color: Colors.white,
+                        //       fontFamily: GoogleFonts.outfit().fontFamily,
+                        //       fontSize: 24.0
+                        //     ),
+                        //     enableInteractiveSelection: false,
+                        //   )
+                        // ),
+                        // Material(
+                        //   child: Container(
+                        //     color: Color(0xFF282828),
+                        //     child: Row(children: [
+                        //       Expanded(flex: 4, child: TextButton(
+                        //         onPressed: () {
+                        //           updateTask(widget.id, {'title': titleController.text});
+                        //           Navigator.of(context).pop();
+                        //         },
+                        //         style: TextButton.styleFrom(
+                        //           minimumSize: Size(40, 60),
+                        //           splashFactory: NoSplash.splashFactory,
+                        //           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        //           padding: EdgeInsets.all(0),
+                        //           backgroundColor: const Color(0xFF9BB1FF)
+                        //         ),
+                        //         child: Text("Update Goal", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+                        //       )),
+                        //       Expanded(
+                        //         flex: 1,
+                        //         child: IconButton(
+                        //           icon: const Icon(Icons.delete, color: Colors.white),
+                        //           onPressed: () {
+                        //             deleteTask(widget.id);
+                        //             Navigator.of(context).pop();
+                        //           }
+                        //         )
+                        //       )
+                        //     ])
+                        //   )
+                        // )
                       ]),
                     )
                   ),
