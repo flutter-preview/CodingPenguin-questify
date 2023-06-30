@@ -59,6 +59,107 @@ class _AddGoalWidgetState extends State<AddGoalWidget> {
                 )
               ), 
             ])),
+            Text("Choose Goal Type:",
+            style: TextStyle(
+                fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24, color : Colors.white)),
+              Material(
+                child: Row(children: [
+                  Expanded(child: TextButton(
+                    onPressed: () {
+                      api.addTask(titleController.text); // should use addType() functionality
+                      Navigator.of(context).pop();
+                    },
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(40, 60),
+                      splashFactory: NoSplash.splashFactory,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      padding: EdgeInsets.all(0),
+                      backgroundColor: const Color(0xFF9BB1FF)
+                    ),
+                    child: Text("Type 1", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+                  )),
+                  Expanded(child: TextButton(
+                    onPressed: () {
+                      api.addTask(titleController.text); // should use addType() functionality
+                      Navigator.of(context).pop();
+                    },
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(40, 60),
+                      splashFactory: NoSplash.splashFactory,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      padding: EdgeInsets.all(0),
+                      backgroundColor: const Color(0xFF9BB1FF)
+                    ),
+                    child: Text("Type 2", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+                  )),
+                  Expanded(child: TextButton(
+                    onPressed: () {
+                      api.addTask(titleController.text); // should use addType() functionality
+                      Navigator.of(context).pop();
+                    },
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(40, 60),
+                      splashFactory: NoSplash.splashFactory,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      padding: EdgeInsets.all(0),
+                      backgroundColor: const Color(0xFF9BB1FF)
+                    ),
+                    child: Text("Type 3", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+                  ))
+                ])
+            ),
+              // Material(
+              // child: Row(children: [Expanded(child: TextButton(
+              //       onPressed: () {
+              //         api.addTask(titleController.text);
+              //         Navigator.of(context).pop();
+              //       },
+              //       style: TextButton.styleFrom(
+              //         minimumSize: Size(40, 60),
+              //         splashFactory: NoSplash.splashFactory,
+              //         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              //         padding: EdgeInsets.all(0),
+              //         backgroundColor: const Color(0xFF9BB1FF)
+              //       ),
+              //       child: Text("Other Button", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+              //     )),
+              //     children: [Expanded(child: TextButton(
+              //       onPressed: () {
+              //         api.addTask(titleController.text);
+              //         Navigator.of(context).pop();
+              //       },
+              //       style: TextButton.styleFrom(
+              //         minimumSize: Size(40, 60),
+              //         splashFactory: NoSplash.splashFactory,
+              //         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              //         padding: EdgeInsets.all(0),
+              //         backgroundColor: const Color(0xFF9BB1FF)
+              //       ),
+              //       child: Text("Other second Button", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+              //     )),
+
+
+              // ]
+              // )),
+
+                //               color: Color(0xFF282828),
+                // child: Row(children: [
+                //   Expanded(child: TextButton(
+                //     onPressed: () {
+                //       api.addTask(titleController.text);
+                //       Navigator.of(context).pop();
+                //     },
+                //     style: TextButton.styleFrom(
+                //       minimumSize: Size(40, 60),
+                //       splashFactory: NoSplash.splashFactory,
+                //       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                //       padding: EdgeInsets.all(0),
+                //       backgroundColor: const Color(0xFF9BB1FF)
+                //     ),
+                //     child: Text("Other Button", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+                //   )),
+                // ])
+            // ),
             Material(
               child: Container(
                 color: Color(0xFF282828),
