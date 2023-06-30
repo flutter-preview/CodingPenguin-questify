@@ -35,7 +35,7 @@ class HomeWidget extends StatelessWidget {
     }
 
     final ApiService api = ApiService();
-    final Stream<QuerySnapshot> _tasksStream = api.getTasks();
+    final Stream<QuerySnapshot> _goalsStream = api.getGoals();
 
     return Column(children: [
       Container(
@@ -91,9 +91,10 @@ class HomeWidget extends StatelessWidget {
           )
         ])
       ),
-      // ****DONE**** TODO: READ FROM FIREBASE INSTEAD: https://kymoraa.medium.com/to-do-list-app-with-flutter-firebase-7910bc42cf14
+
+      // modularize this and put this into another class called like displayGoals
       StreamBuilder<QuerySnapshot>(
-        stream: _tasksStream,
+        stream: _goalsStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text(style: TextStyle(color: Colors.white), "Unable to get Goals :(");

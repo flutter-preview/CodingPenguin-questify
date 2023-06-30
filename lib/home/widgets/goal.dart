@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'tasks.dart';
 import '../../api_service.dart';
 
 class GoalWidget extends StatefulWidget {
@@ -31,75 +31,93 @@ class _GoalWidgetState extends State<GoalWidget> {
                 return Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    height: 225,
+                    // height: 225,
+                    height: MediaQuery.of(context).size.height / 2,
                     decoration: BoxDecoration(
                       color: const Color(0xFF282828),
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(30),
-                      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                        Material(
-                          borderRadius: BorderRadius.circular(20), // this has to stay if lines 50-57 stay
-                          child: TextField(
-                            controller: titleController,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: const Color(0xFF3F3C3C),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              hintText: "Task Title",
-                              hintStyle: TextStyle(
-                                color: const Color(0xFFDEDEDE),
-                                fontFamily: GoogleFonts.outfit().fontFamily,
-                                fontSize: 24.0
-                              )
-                            ),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.outfit().fontFamily,
-                              fontSize: 24.0
-                            ),
-                            enableInteractiveSelection: false,
-                          )
-                        ),    
-                        Material(
-                          child: Container(
-                            color: Color(0xFF282828),
-                            child: Row(children: [
-                              Expanded(flex: 4, child: TextButton(
-                                onPressed: () {
-                                  updateTask(widget.id, {'title': titleController.text});
-                                  Navigator.of(context).pop();
-                                },
-                                style: TextButton.styleFrom(
-                                  minimumSize: Size(40, 60),
-                                  splashFactory: NoSplash.splashFactory,
-                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  padding: EdgeInsets.all(0),
-                                  backgroundColor: const Color(0xFF9BB1FF)
-                                ),
-                                child: Text("Update Goal", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
-                              )),
-                              Expanded(
-                                flex: 1,
-                                child: IconButton(
-                                  icon: const Icon(Icons.delete, color: Colors.white),
-                                  onPressed: () {
-                                    deleteTask(widget.id);
-                                    Navigator.of(context).pop();
-                                  }
-                                )
-                              )
-                            ])
-                          )
-                        )
+                      child: Column(children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                          Text("Tasks", style: TextStyle(fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24)),
+                          TextButton(onPressed: () {
+                            // WHAT DOES CLICKING ADD TASK DO. BRING UP A NEW POPUP THAT ASKS FOR TEXT INPUT?
+                          }, style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                        minimumSize: Size(100, 30),
+                                        splashFactory: NoSplash.splashFactory,
+                                        tapTargetSize:
+                                            MaterialTapTargetSize.shrinkWrap,
+                                        padding: EdgeInsets.all(0),
+                                        backgroundColor:
+                                            const Color(0xFF9BB1FF)),
+                          child: Text("Add Goal", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 12)))
+                        ]
+                        ),
+                        TasksWidget(),
+                        // Material(
+                        //   borderRadius: BorderRadius.circular(20), // this has to stay if lines 50-57 stay
+                        //   child: TextField(
+                        //     controller: titleController,
+                        //     decoration: InputDecoration(
+                        //       filled: true,
+                        //       fillColor: const Color(0xFF3F3C3C),
+                        //       border: OutlineInputBorder(
+                        //         borderSide: BorderSide.none,
+                        //         borderRadius: BorderRadius.circular(15),
+                        //       ),
+                        //       focusedBorder: OutlineInputBorder(
+                        //         borderSide: BorderSide.none,
+                        //         borderRadius: BorderRadius.circular(15),
+                        //       ),
+                        //       hintText: "Task Title",
+                        //       hintStyle: TextStyle(
+                        //         color: const Color(0xFFDEDEDE),
+                        //         fontFamily: GoogleFonts.outfit().fontFamily,
+                        //         fontSize: 24.0
+                        //       )
+                        //     ),
+                        //     style: TextStyle(
+                        //       color: Colors.white,
+                        //       fontFamily: GoogleFonts.outfit().fontFamily,
+                        //       fontSize: 24.0
+                        //     ),
+                        //     enableInteractiveSelection: false,
+                        //   )
+                        // ),    
+                        // Material(
+                        //   child: Container(
+                        //     color: Color(0xFF282828),
+                        //     child: Row(children: [
+                        //       Expanded(flex: 4, child: TextButton(
+                        //         onPressed: () {
+                        //           updateTask(widget.id, {'title': titleController.text});
+                        //           Navigator.of(context).pop();
+                        //         },
+                        //         style: TextButton.styleFrom(
+                        //           minimumSize: Size(40, 60),
+                        //           splashFactory: NoSplash.splashFactory,
+                        //           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        //           padding: EdgeInsets.all(0),
+                        //           backgroundColor: const Color(0xFF9BB1FF)
+                        //         ),
+                        //         child: Text("Update Goal", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
+                        //       )),
+                        //       Expanded(
+                        //         flex: 1,
+                        //         child: IconButton(
+                        //           icon: const Icon(Icons.delete, color: Colors.white),
+                        //           onPressed: () {
+                        //             deleteTask(widget.id);
+                        //             Navigator.of(context).pop();
+                        //           }
+                        //         )
+                        //       )
+                        //     ])
+                        //   )
+                        // )
                       ]),
                     )
                   ),

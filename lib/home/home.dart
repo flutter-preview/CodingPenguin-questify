@@ -36,9 +36,7 @@ class _HomeState extends State<Home> {
             centerTitle: true,
             title: Image.asset('assets/logos/MWHAHAH.png',
                 width: 40, height: 40, fit: BoxFit.fitHeight)),
-        body: Center(
-          child: widgetOptions.elementAt(_selectedIndex),
-        ),
+        body: SingleChildScrollView(child: widgetOptions.elementAt(_selectedIndex)),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
