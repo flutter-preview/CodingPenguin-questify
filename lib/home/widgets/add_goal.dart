@@ -66,11 +66,11 @@ class _AddGoalWidgetState extends State<AddGoalWidget> {
                 child: Row(children: [
                   Expanded(child: TextButton(
                     onPressed: () {
-                      api.addTask(titleController.text); // should use addType() functionality
+                      api.addGoalType(titleController.text); // should use addType() functionality
                       Navigator.of(context).pop();
                     },
                     style: TextButton.styleFrom(
-                      minimumSize: Size(40, 60),
+                      minimumSize: Size(20, 40),
                       splashFactory: NoSplash.splashFactory,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       padding: EdgeInsets.all(0),
@@ -78,13 +78,22 @@ class _AddGoalWidgetState extends State<AddGoalWidget> {
                     ),
                     child: Text("Type 1", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
                   )),
+                  Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                      child: Container(
+                      padding: const EdgeInsets.all(0.0),
+                      color: Colors.green,
+                      width: 20.0,
+                      height: 40.0,
+                    ), //Container
+                  ), //Padding
                   Expanded(child: TextButton(
                     onPressed: () {
-                      api.addTask(titleController.text); // should use addType() functionality
+                      api.addGoalType(titleController.text); // should use addType() functionality
                       Navigator.of(context).pop();
                     },
                     style: TextButton.styleFrom(
-                      minimumSize: Size(40, 60),
+                      minimumSize: Size(20, 40),
                       splashFactory: NoSplash.splashFactory,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       padding: EdgeInsets.all(0),
@@ -92,13 +101,22 @@ class _AddGoalWidgetState extends State<AddGoalWidget> {
                     ),
                     child: Text("Type 2", style: TextStyle(color: Colors.white, fontFamily: GoogleFonts.outfit().fontFamily, fontSize: 24.0)),
                   )),
+                 Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                      child: Container(
+                      padding: const EdgeInsets.all(0.0),
+                      color: Colors.green,
+                      width: 20.0,
+                      height: 40.0,
+                    ), //Container
+                  ), //Padding
                   Expanded(child: TextButton(
                     onPressed: () {
-                      api.addTask(titleController.text); // should use addType() functionality
+                      api.addGoalType(titleController.text); // should use addType() functionality
                       Navigator.of(context).pop();
                     },
                     style: TextButton.styleFrom(
-                      minimumSize: Size(40, 60),
+                      minimumSize: Size(20, 40),
                       splashFactory: NoSplash.splashFactory,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       padding: EdgeInsets.all(0),
