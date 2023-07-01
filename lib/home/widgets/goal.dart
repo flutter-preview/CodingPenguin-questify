@@ -138,13 +138,13 @@ class _GoalWidgetState extends State<GoalWidget> {
                       ),
                       Row(children: [
                         Expanded(flex: 5, child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                          Padding(padding: EdgeInsets.only(bottom: 5), child: Text(
+                          Padding(padding: EdgeInsets.only(bottom: 5), child: Align(alignment: Alignment.centerLeft, child: Text(
                             'Progress %',
                             style: TextStyle(
                               fontFamily: GoogleFonts.outfit().fontFamily,
                               fontSize: 16
                             )
-                          )),
+                          ))),
                           ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                             child: LinearProgressIndicator(

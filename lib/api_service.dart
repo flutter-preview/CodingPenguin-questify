@@ -22,6 +22,12 @@ class ApiService {
       .then((value) => log("Task added"))
       .catchError((onError) => log("Failed to add task: $onError"));
   }
+
+  Stream<QuerySnapshot> getEvents() {
+    final firebaseDB = FirebaseFirestore.instance;
+    return firebaseDB.collection("events").snapshots();
+  }
+
 }
 
   Future<void> updateTask(String id, Map<String, String> payload) {
